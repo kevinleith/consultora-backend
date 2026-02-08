@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Power BI Consultora - Dashboards para PyMEs</title>
+    <title>Consultora de Datos | Business Intelligence y Automatización</title>
     <style>
         * {
             margin: 0;
@@ -39,10 +39,8 @@
         .logo {
             font-size: 1.5rem;
             font-weight: 700;
-            background: linear-gradient(135deg, #6366f1 0%, #a78bfa 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
+            color: #f1f5f9;
+            letter-spacing: 1px;
         }
 
         nav a {
@@ -508,11 +506,11 @@
     <!-- HEADER -->
     <header>
         <div class="header-container">
-            <div class="logo">⚡ PowerBI Pro</div>
+            <div class="logo">Data Insights</div>
             <nav>
                 <a href="#inicio">Inicio</a>
                 <a href="#servicios">Servicios</a>
-                <a href="#contacto">Contacto</a>
+                <a href="#contacto">Consulta</a>
             </nav>
         </div>
     </header>
@@ -520,11 +518,11 @@
     <!-- HERO -->
     <section class="hero" id="inicio">
         <div class="hero-content">
-            <h1>Dashboards y Automatización para tu PyME</h1>
-            <p>Transformá Excel en reportes profesionales. Power BI implementado rápido, simple y sin complicaciones.</p>
+            <h1>Datos, Decisiones y Resultados</h1>
+            <p>Transformamos datos en conocimiento estratégico. Business Intelligence, automatización inteligente e IA aplicada al negocio.</p>
             <div class="hero-buttons">
-                <button class="btn btn-primary" onclick="document.getElementById('contacto').scrollIntoView({ behavior: 'smooth' })">Obtener Demo Gratuita</button>
-                <button class="btn btn-secondary">Ver Casos de Éxito</button>
+                <button class="btn btn-primary" onclick="document.getElementById('contacto').scrollIntoView({ behavior: 'smooth' })">Agendar Consulta</button>
+                <button class="btn btn-secondary">Descargar Caso de Estudio</button>
             </div>
         </div>
     </section>
@@ -532,26 +530,26 @@
     <!-- SERVICES -->
     <section class="services" id="servicios">
         <div class="services-container">
-            <h2 class="section-title">Nuestros Servicios</h2>
-            <p class="section-subtitle">Soluciones completas de BI para empresas en crecimiento</p>
+            <h2 class="section-title">Nuestras Soluciones</h2>
+            <p class="section-subtitle">Servicios de consultoría en datos orientados a resultados medibles</p>
             
             <div class="services-grid">
                 <div class="service-card">
                     <div class="service-icon">📊</div>
-                    <h3>Dashboards Personalizados</h3>
-                    <p>Dashboards de ventas, operaciones y finanzas adaptados a tu negocio. Visualización clara de datos en tiempo real.</p>
+                    <h3>Business Intelligence</h3>
+                    <p>Power BI, dashboards ejecutivos y análisis avanzado. Datos en tiempo real para decisiones informadas. Arquitectura escalable y segura.</p>
                 </div>
 
                 <div class="service-card">
                     <div class="service-icon">⚙️</div>
-                    <h3>Automatización de Procesos</h3>
-                    <p>Automatizá reportes, actualizaciones de datos y flujos de trabajo. Ahorrá horas cada semana en tareas manuales.</p>
+                    <h3>Automatización Inteligente</h3>
+                    <p>RPA y flujos de procesos automatizados. Elimina tareas manuales, reduce errores, libera recursos. ROI verificable en 90 días.</p>
                 </div>
 
                 <div class="service-card">
-                    <div class="service-icon">🚀</div>
-                    <h3>Implementación Rápida</h3>
-                    <p>Puesta en marcha en 2-4 semanas. Capacitación incluida. Soporte continuo para tu equipo sin sorpresas.</p>
+                    <div class="service-icon">🤖</div>
+                    <h3>IA Aplicada al Negocio</h3>
+                    <p>Predicción de demanda, detección de anomalías, optimización de procesos. Machine Learning integrado en tus sistemas.</p>
                 </div>
             </div>
         </div>
@@ -560,32 +558,32 @@
     <!-- CTA -->
     <section class="cta">
         <div class="cta-container">
-            <h2>¿Listo para transformar tus datos?</h2>
-            <p>Agenda una consulta gratuita de 30 minutos. Sin compromiso, sin costo.</p>
-            <button class="btn btn-primary" onclick="document.getElementById('contacto').scrollIntoView({ behavior: 'smooth' })">Agendar Consulta</button>
+            <h2>Ordená tus datos. Potenciá tu estrategia.</h2>
+            <p>Consulta gratuita con nuestros especialistas. Análisis sin compromiso de tu situación actual.</p>
+            <button class="btn btn-primary" onclick="document.getElementById('contacto').scrollIntoView({ behavior: 'smooth' })">Agendar Sesión</button>
         </div>
     </section>
 
     <!-- CONTACT FORM -->
     <section class="contact-section" id="contacto">
         <div class="contact-container">
-            <h2 class="section-title">Contactanos</h2>
-            <p class="section-subtitle">Completá el formulario y nos comunicaremos en 24 horas</p>
+            <h2 class="section-title">Iniciemos la Conversación</h2>
+            <p class="section-subtitle">Cuéntanos sobre tu empresa y desafíos actuales</p>
 
             <div class="success-message" id="successMessage">
-                ✓ ¡Gracias! Hemos recibido tu mensaje. Nos contactaremos pronto.
+                Tu consulta ha sido registrada. Nos pondremos en contacto en las próximas 24 horas.
             </div>
 
             <form class="contact-form" id="contactForm" onsubmit="handleFormSubmit(event)">
                 <div class="form-group">
-                    <label for="name">Nombre Completo <span style="color: #ef4444;">*</span></label>
+                    <label for="name">Nombre <span style="color: #ef4444;">*</span></label>
                     <input type="text" id="name" name="name" placeholder="Tu nombre" required>
                     <div class="error-message" id="nameError"></div>
                 </div>
 
                 <div class="form-group">
                     <label for="email">Email <span style="color: #ef4444;">*</span></label>
-                    <input type="email" id="email" name="email" placeholder="tu@email.com" required>
+                    <input type="email" id="email" name="email" placeholder="tu@empresa.com" required>
                     <div class="error-message" id="emailError"></div>
                 </div>
 
@@ -602,7 +600,7 @@
 
     <!-- FOOTER -->
     <footer>
-        <p>&copy; 2026 PowerBI Pro Consultora. Diseño y desarrollo optimizado para PyMEs. | Todos los derechos reservados.</p>
+        <p>Data Insights Consultora. Especialistas en Business Intelligence, Automatización e IA.</p>
     </footer>
 
     <script>
@@ -632,26 +630,26 @@
             let isValid = true;
 
             if (!name) {
-                document.getElementById('nameError').textContent = 'El nombre es obligatorio';
+                document.getElementById('nameError').textContent = 'El nombre es requerido';
                 document.getElementById('nameError').classList.add('show');
                 document.getElementById('name').classList.add('error');
                 isValid = false;
             }
 
             if (!email) {
-                document.getElementById('emailError').textContent = 'El email es obligatorio';
+                document.getElementById('emailError').textContent = 'El email es requerido';
                 document.getElementById('emailError').classList.add('show');
                 document.getElementById('email').classList.add('error');
                 isValid = false;
             } else if (!validateEmail(email)) {
-                document.getElementById('emailError').textContent = 'Ingresá un email válido';
+                document.getElementById('emailError').textContent = 'Email inválido';
                 document.getElementById('emailError').classList.add('show');
                 document.getElementById('email').classList.add('error');
                 isValid = false;
             }
 
             if (!empresa) {
-                document.getElementById('empresaError').textContent = 'El nombre de la empresa es obligatorio';
+                document.getElementById('empresaError').textContent = 'El nombre de la empresa es requerido';
                 document.getElementById('empresaError').classList.add('show');
                 document.getElementById('empresa').classList.add('error');
                 isValid = false;
@@ -662,7 +660,7 @@
                 submitBtn.disabled = true;
                 submitBtn.textContent = 'Enviando...';
                                    
-                fetch("http://127.0.0.1:8000/lead", {
+                fetch("https://consultora-backend.onrender.com/lead", {
                     method: "POST",
                     headers: {
                         "Content-Type": "application/json"
@@ -676,7 +674,7 @@
                 .then(response => {
                     if (!response.ok) {
                         return response.json().then(data => {
-                            throw new Error(data.detail || "Error al enviar el formulario");
+                            throw new Error(data.detail || "Error en la solicitud");
                         });
                     }
                     return response.json();
@@ -689,7 +687,7 @@
 
                     setTimeout(() => {
                         document.getElementById('successMessage').classList.remove('show');
-                    }, 5000);
+                    }, 6000);
                 })
                 .catch(error => {
                     alert("Error: " + error.message);
@@ -697,7 +695,6 @@
                     submitBtn.disabled = false;
                     submitBtn.textContent = 'Enviar Consulta';
                 });
-
             }
         }
 
