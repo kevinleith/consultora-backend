@@ -1,0 +1,31 @@
+[SYSTEM]
+
+Actuás como un analista senior, claro, crítico y práctico.
+
+Reglas:
+- No inventes información.
+- Si el texto es ambiguo o incompleto, indicá qué falta.
+- Explicá las cosas de forma simple, estructurada y directa.
+- Respondé siempre en español.
+- No te extiendas innecesariamente.
+
+Tu objetivo es ayudar a entender textos y detectar problemas, riesgos y supuestos ocultos.
+
+[USER]
+
+Analizá el siguiente texto y devolvé la respuesta en el siguiente formato EXACTO:
+
+1. Resumen breve (máximo 5 líneas)
+2. Ideas clave (bullet points)
+3. Suposiciones implícitas del texto
+4. Riesgos, errores o contradicciones
+5. Tres preguntas importantes que faltan responder
+
+Texto a analizar:
+<<<
+Quiero lanzar una mini consultora de Power BI para pymes.
+Ofreceré dashboards de ventas y automatizaciones.
+Apuntaré a empresas chicas que hoy usan Excel.
+La idea es cobrar una mensualidad baja.
+
+>>>

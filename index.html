@@ -1,0 +1,726 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Power BI Consultora - Dashboards para PyMEs</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            background-color: #0a0e27;
+            color: #e4e4e7;
+            line-height: 1.6;
+        }
+
+        /* HEADER & NAVIGATION */
+        header {
+            background: linear-gradient(135deg, #0a0e27 0%, #1a1f3a 100%);
+            padding: 1.5rem 2rem;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            border-bottom: 1px solid rgba(99, 102, 241, 0.2);
+        }
+
+        .header-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+            background: linear-gradient(135deg, #6366f1 0%, #a78bfa 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        nav a {
+            margin-left: 2rem;
+            color: #e4e4e7;
+            text-decoration: none;
+            font-size: 0.95rem;
+            transition: color 0.3s ease;
+        }
+
+        nav a:hover {
+            color: #6366f1;
+        }
+
+        /* HERO SECTION */
+        .hero {
+            background: linear-gradient(135deg, #0a0e27 0%, #1a1f3a 50%, #15213e 100%);
+            padding: 6rem 2rem;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -10%;
+            width: 500px;
+            height: 500px;
+            background: radial-gradient(circle, rgba(99, 102, 241, 0.1) 0%, transparent 70%);
+            border-radius: 50%;
+            pointer-events: none;
+        }
+
+        .hero::after {
+            content: '';
+            position: absolute;
+            bottom: -50%;
+            left: -10%;
+            width: 400px;
+            height: 400px;
+            background: radial-gradient(circle, rgba(167, 139, 250, 0.08) 0%, transparent 70%);
+            border-radius: 50%;
+            pointer-events: none;
+        }
+
+        .hero-content {
+            max-width: 900px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 1;
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            margin-bottom: 1rem;
+            font-weight: 800;
+            line-height: 1.2;
+            background: linear-gradient(135deg, #ffffff 0%, #a78bfa 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .hero p {
+            font-size: 1.3rem;
+            color: #cbd5e1;
+            margin-bottom: 2.5rem;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 1.5rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            padding: 0.95rem 2.5rem;
+            border: none;
+            border-radius: 8px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: inline-block;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, #6366f1 0%, #8b5cf6 100%);
+            color: white;
+            box-shadow: 0 10px 30px rgba(99, 102, 241, 0.3);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 15px 40px rgba(99, 102, 241, 0.4);
+        }
+
+        .btn-primary:disabled {
+            opacity: 0.7;
+            cursor: not-allowed;
+            transform: none;
+        }
+
+        .btn-secondary {
+            background: transparent;
+            color: #6366f1;
+            border: 2px solid #6366f1;
+        }
+
+        .btn-secondary:hover {
+            background: rgba(99, 102, 241, 0.1);
+            transform: translateY(-2px);
+        }
+
+        /* SERVICES SECTION */
+        .services {
+            padding: 5rem 2rem;
+            background: #0f1428;
+        }
+
+        .services-container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .section-title {
+            font-size: 2.5rem;
+            text-align: center;
+            margin-bottom: 1rem;
+            font-weight: 700;
+            background: linear-gradient(135deg, #ffffff 0%, #a78bfa 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .section-subtitle {
+            text-align: center;
+            color: #94a3b8;
+            font-size: 1.1rem;
+            margin-bottom: 4rem;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2.5rem;
+        }
+
+        .service-card {
+            background: linear-gradient(135deg, #1a1f3a 0%, #15213e 100%);
+            padding: 2.5rem;
+            border-radius: 12px;
+            border: 1px solid rgba(99, 102, 241, 0.2);
+            transition: all 0.3s ease;
+            cursor: pointer;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .service-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: linear-gradient(90deg, #6366f1 0%, #8b5cf6 100%);
+            transform: scaleX(0);
+            transform-origin: left;
+            transition: transform 0.3s ease;
+        }
+
+        .service-card:hover {
+            border-color: rgba(99, 102, 241, 0.5);
+            background: linear-gradient(135deg, #1e2447 0%, #1a264d 100%);
+            transform: translateY(-5px);
+            box-shadow: 0 20px 40px rgba(99, 102, 241, 0.15);
+        }
+
+        .service-card:hover::before {
+            transform: scaleX(1);
+        }
+
+        .service-icon {
+            font-size: 2.5rem;
+            margin-bottom: 1.5rem;
+            display: inline-block;
+        }
+
+        .service-card h3 {
+            font-size: 1.4rem;
+            margin-bottom: 1rem;
+            color: #f1f5f9;
+        }
+
+        .service-card p {
+            color: #cbd5e1;
+            font-size: 0.95rem;
+            line-height: 1.8;
+        }
+
+        /* CTA SECTION */
+        .cta {
+            background: linear-gradient(135deg, #1a1f3a 0%, #15213e 100%);
+            padding: 4rem 2rem;
+            text-align: center;
+            border-top: 1px solid rgba(99, 102, 241, 0.2);
+        }
+
+        .cta-container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .cta h2 {
+            font-size: 2.2rem;
+            margin-bottom: 1.5rem;
+            color: #f1f5f9;
+        }
+
+        .cta p {
+            font-size: 1.1rem;
+            color: #cbd5e1;
+            margin-bottom: 2.5rem;
+        }
+
+        /* CONTACT FORM SECTION */
+        .contact-section {
+            background: #0f1428;
+            padding: 5rem 2rem;
+            border-top: 1px solid rgba(99, 102, 241, 0.2);
+        }
+
+        .contact-container {
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .contact-form {
+            background: linear-gradient(135deg, #1a1f3a 0%, #15213e 100%);
+            padding: 3rem;
+            border-radius: 12px;
+            border: 1px solid rgba(99, 102, 241, 0.2);
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+            color: #f1f5f9;
+            font-size: 0.95rem;
+        }
+
+        .form-group input {
+            width: 100%;
+            padding: 0.9rem 1.2rem;
+            background: rgba(15, 20, 40, 0.8);
+            border: 1px solid rgba(99, 102, 241, 0.3);
+            border-radius: 8px;
+            color: #e4e4e7;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+        }
+
+        .form-group input:focus {
+            outline: none;
+            border-color: #6366f1;
+            background: rgba(15, 20, 40, 1);
+            box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.1);
+        }
+
+        .form-group input::placeholder {
+            color: #64748b;
+        }
+
+        .form-group input.error {
+            border-color: #ef4444;
+            background: rgba(239, 68, 68, 0.05);
+        }
+
+        .error-message {
+            color: #ef4444;
+            font-size: 0.85rem;
+            margin-top: 0.4rem;
+            display: none;
+        }
+
+        .error-message.show {
+            display: block;
+        }
+
+        .form-submit {
+            width: 100%;
+            padding: 1rem;
+            background: linear-gradient(135deg, #6366f1 0%, #8b5cf6 100%);
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 10px 30px rgba(99, 102, 241, 0.3);
+        }
+
+        .form-submit:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 15px 40px rgba(99, 102, 241, 0.4);
+        }
+
+        .form-submit:disabled {
+            opacity: 0.7;
+            cursor: not-allowed;
+            transform: none;
+        }
+
+        .success-message {
+            background: rgba(34, 197, 94, 0.1);
+            border: 1px solid #22c55e;
+            color: #86efac;
+            padding: 1rem 1.5rem;
+            border-radius: 8px;
+            margin-bottom: 2rem;
+            display: none;
+            text-align: center;
+            font-weight: 500;
+        }
+
+        .success-message.show {
+            display: block;
+            animation: slideIn 0.3s ease;
+        }
+
+        @keyframes slideIn {
+            from {
+                opacity: 0;
+                transform: translateY(-10px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* FOOTER */
+        footer {
+            background: #0a0e27;
+            padding: 2rem;
+            text-align: center;
+            border-top: 1px solid rgba(99, 102, 241, 0.2);
+            color: #64748b;
+            font-size: 0.9rem;
+        }
+
+        /* RESPONSIVE */
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2.2rem;
+            }
+
+            .hero p {
+                font-size: 1.05rem;
+            }
+
+            .section-title {
+                font-size: 2rem;
+            }
+
+            nav {
+                display: none;
+            }
+
+            nav a {
+                margin-left: 1rem;
+            }
+
+            .hero-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .btn {
+                width: 100%;
+                max-width: 300px;
+            }
+
+            .services-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .cta h2 {
+                font-size: 1.8rem;
+            }
+
+            header {
+                padding: 1rem 1.5rem;
+            }
+
+            .logo {
+                font-size: 1.2rem;
+            }
+
+            .contact-form {
+                padding: 2rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .hero {
+                padding: 3rem 1rem;
+            }
+
+            .hero h1 {
+                font-size: 1.8rem;
+            }
+
+            .hero p {
+                font-size: 0.95rem;
+            }
+
+            .services {
+                padding: 3rem 1rem;
+            }
+
+            .section-title {
+                font-size: 1.6rem;
+            }
+
+            .cta {
+                padding: 2.5rem 1rem;
+            }
+
+            .cta h2 {
+                font-size: 1.4rem;
+            }
+
+            .contact-section {
+                padding: 3rem 1rem;
+            }
+
+            .contact-form {
+                padding: 1.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- HEADER -->
+    <header>
+        <div class="header-container">
+            <div class="logo">⚡ PowerBI Pro</div>
+            <nav>
+                <a href="#inicio">Inicio</a>
+                <a href="#servicios">Servicios</a>
+                <a href="#contacto">Contacto</a>
+            </nav>
+        </div>
+    </header>
+
+    <!-- HERO -->
+    <section class="hero" id="inicio">
+        <div class="hero-content">
+            <h1>Dashboards y Automatización para tu PyME</h1>
+            <p>Transformá Excel en reportes profesionales. Power BI implementado rápido, simple y sin complicaciones.</p>
+            <div class="hero-buttons">
+                <button class="btn btn-primary" onclick="document.getElementById('contacto').scrollIntoView({ behavior: 'smooth' })">Obtener Demo Gratuita</button>
+                <button class="btn btn-secondary">Ver Casos de Éxito</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- SERVICES -->
+    <section class="services" id="servicios">
+        <div class="services-container">
+            <h2 class="section-title">Nuestros Servicios</h2>
+            <p class="section-subtitle">Soluciones completas de BI para empresas en crecimiento</p>
+            
+            <div class="services-grid">
+                <div class="service-card">
+                    <div class="service-icon">📊</div>
+                    <h3>Dashboards Personalizados</h3>
+                    <p>Dashboards de ventas, operaciones y finanzas adaptados a tu negocio. Visualización clara de datos en tiempo real.</p>
+                </div>
+
+                <div class="service-card">
+                    <div class="service-icon">⚙️</div>
+                    <h3>Automatización de Procesos</h3>
+                    <p>Automatizá reportes, actualizaciones de datos y flujos de trabajo. Ahorrá horas cada semana en tareas manuales.</p>
+                </div>
+
+                <div class="service-card">
+                    <div class="service-icon">🚀</div>
+                    <h3>Implementación Rápida</h3>
+                    <p>Puesta en marcha en 2-4 semanas. Capacitación incluida. Soporte continuo para tu equipo sin sorpresas.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA -->
+    <section class="cta">
+        <div class="cta-container">
+            <h2>¿Listo para transformar tus datos?</h2>
+            <p>Agenda una consulta gratuita de 30 minutos. Sin compromiso, sin costo.</p>
+            <button class="btn btn-primary" onclick="document.getElementById('contacto').scrollIntoView({ behavior: 'smooth' })">Agendar Consulta</button>
+        </div>
+    </section>
+
+    <!-- CONTACT FORM -->
+    <section class="contact-section" id="contacto">
+        <div class="contact-container">
+            <h2 class="section-title">Contactanos</h2>
+            <p class="section-subtitle">Completá el formulario y nos comunicaremos en 24 horas</p>
+
+            <div class="success-message" id="successMessage">
+                ✓ ¡Gracias! Hemos recibido tu mensaje. Nos contactaremos pronto.
+            </div>
+
+            <form class="contact-form" id="contactForm" onsubmit="handleFormSubmit(event)">
+                <div class="form-group">
+                    <label for="name">Nombre Completo <span style="color: #ef4444;">*</span></label>
+                    <input type="text" id="name" name="name" placeholder="Tu nombre" required>
+                    <div class="error-message" id="nameError"></div>
+                </div>
+
+                <div class="form-group">
+                    <label for="email">Email <span style="color: #ef4444;">*</span></label>
+                    <input type="email" id="email" name="email" placeholder="tu@email.com" required>
+                    <div class="error-message" id="emailError"></div>
+                </div>
+
+                <div class="form-group">
+                    <label for="empresa">Empresa <span style="color: #ef4444;">*</span></label>
+                    <input type="text" id="empresa" name="empresa" placeholder="Nombre de tu empresa" required>
+                    <div class="error-message" id="empresaError"></div>
+                </div>
+
+                <button type="submit" class="form-submit" id="submitBtn">Enviar Consulta</button>
+            </form>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer>
+        <p>&copy; 2026 PowerBI Pro Consultora. Diseño y desarrollo optimizado para PyMEs. | Todos los derechos reservados.</p>
+    </footer>
+
+    <script>
+        function validateEmail(email) {
+            const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            return emailRegex.test(email);
+        }
+
+        function clearErrors() {
+            document.getElementById('nameError').classList.remove('show');
+            document.getElementById('emailError').classList.remove('show');
+            document.getElementById('empresaError').classList.remove('show');
+
+            document.getElementById('name').classList.remove('error');
+            document.getElementById('email').classList.remove('error');
+            document.getElementById('empresa').classList.remove('error');
+        }
+
+        function handleFormSubmit(event) {
+            event.preventDefault();
+            clearErrors();
+
+            const name = document.getElementById('name').value.trim();
+            const email = document.getElementById('email').value.trim();
+            const empresa = document.getElementById('empresa').value.trim();
+
+            let isValid = true;
+
+            if (!name) {
+                document.getElementById('nameError').textContent = 'El nombre es obligatorio';
+                document.getElementById('nameError').classList.add('show');
+                document.getElementById('name').classList.add('error');
+                isValid = false;
+            }
+
+            if (!email) {
+                document.getElementById('emailError').textContent = 'El email es obligatorio';
+                document.getElementById('emailError').classList.add('show');
+                document.getElementById('email').classList.add('error');
+                isValid = false;
+            } else if (!validateEmail(email)) {
+                document.getElementById('emailError').textContent = 'Ingresá un email válido';
+                document.getElementById('emailError').classList.add('show');
+                document.getElementById('email').classList.add('error');
+                isValid = false;
+            }
+
+            if (!empresa) {
+                document.getElementById('empresaError').textContent = 'El nombre de la empresa es obligatorio';
+                document.getElementById('empresaError').classList.add('show');
+                document.getElementById('empresa').classList.add('error');
+                isValid = false;
+            }
+
+            if (isValid) {
+                const submitBtn = document.getElementById('submitBtn');
+                submitBtn.disabled = true;
+                submitBtn.textContent = 'Enviando...';
+                                   
+                fetch("http://127.0.0.1:8000/lead", {
+                    method: "POST",
+                    headers: {
+                        "Content-Type": "application/json"
+                    },
+                    body: JSON.stringify({
+                        nombre: name,
+                        email: email,
+                        empresa: empresa
+                    })
+                })
+                .then(response => {
+                    if (!response.ok) {
+                        return response.json().then(data => {
+                            throw new Error(data.detail || "Error al enviar el formulario");
+                        });
+                    }
+                    return response.json();
+                })
+                .then(() => {
+                    document.getElementById('contactForm').reset();
+                    document.getElementById('successMessage').classList.add('show');
+                    submitBtn.disabled = false;
+                    submitBtn.textContent = 'Enviar Consulta';
+
+                    setTimeout(() => {
+                        document.getElementById('successMessage').classList.remove('show');
+                    }, 5000);
+                })
+                .catch(error => {
+                    alert("Error: " + error.message);
+                    console.error(error);
+                    submitBtn.disabled = false;
+                    submitBtn.textContent = 'Enviar Consulta';
+                });
+
+            }
+        }
+
+        document.getElementById('name').addEventListener('input', function() {
+            if (this.value.trim()) {
+                this.classList.remove('error');
+                document.getElementById('nameError').classList.remove('show');
+            }
+        });
+
+        document.getElementById('email').addEventListener('input', function() {
+            if (this.value.trim()) {
+                this.classList.remove('error');
+                document.getElementById('emailError').classList.remove('show');
+            }
+        });
+
+        document.getElementById('empresa').addEventListener('input', function() {
+            if (this.value.trim()) {
+                this.classList.remove('error');
+                document.getElementById('empresaError').classList.remove('show');
+            }
+        });
+    </script>
+</body>
+</html>
